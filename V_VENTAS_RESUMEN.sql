@@ -9,6 +9,9 @@ hv.est_venta
 from 
 hechos_ventas hv 
 inner join producto p 
+on hv.id_producto = p.id_producto
+where 
+hv.est_venta = 'REND'
 group by 
 hv.id_producto,
 p.producto,
