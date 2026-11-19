@@ -8,7 +8,7 @@ select
     sum(hv.monto) as monto,
     sum(hv.total) as total,
     hv.est_venta,
-    date(hv.fecha_ins) as fecha_venta
+    date_format(hv.fecha_ins, '%Y-%m') as periodo
 from
     hechos_ventas hv
     inner join producto p on hv.id_producto = p.id_producto
@@ -19,6 +19,8 @@ group by
     p.producto,
     p.marca,
     hv.est_venta,
-    date(hv.fecha_ins);
+    date_format(hv.fecha_ins, '%Y-%m')
+order by
+    periodo;
 
 -- select * from v_ventas_resumen vvr
